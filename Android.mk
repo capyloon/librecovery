@@ -47,9 +47,9 @@ librecovery_echo_vars:
 include $(CLEAR_VARS)
 LOCAL_MODULE := librecovery
 LOCAL_SRC_FILES := $(LIBRECOVERY_SRC_FILES)
-LOCAL_SHARED_LIBRARIES := libcutils
+LOCAL_SHARED_LIBRARIES := libcutils liblog
 LOCAL_CFLAGS := $(LIBRECOVERY_CFLAGS)
-LOCAL_MODULE_TAGS := optional eng
+LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
 
 # librecovery test harness
@@ -65,7 +65,7 @@ include $(BUILD_EXECUTABLE)
 # librecovery test data -- this uses a local make target instead of an AOSP
 # module to avoid being built by default (signing an update zip requires java)
 TESTS_DIR := $(LOCAL_PATH)/tests
-OUT_DIR := $(shell cd $(call local-intermediates-dir); pwd)
+TESTS_OUT := $(shell cd $(call local-intermediates-dir); pwd)
 
 .PHONY: librecovery_testdata
 librecovery_testdata: librecovery_test

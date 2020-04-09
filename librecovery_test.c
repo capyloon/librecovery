@@ -54,7 +54,6 @@ fotaUpdateResultToString(FotaUpdateResult result)
 int
 main(int argc, char **argv)
 {
-  int i;
   char *command;
 
   if (argc < 2) {

@@ -96,7 +96,6 @@ safeRead(FILE *file, void *data, size_t size)
 static int
 execRecoveryCommand(char *command, size_t commandLength)
 {
-  struct stat recoveryDirStat;
   int commandFd;
 
   // Ensure the recovery directory exists
@@ -227,7 +226,7 @@ getFotaUpdateStatus(FotaUpdateStatus *status)
   struct stat lastInstallStat;
   char lastInstallData[kLastInstallMaxLength];
   char *updateResult, *updatePath, *tokenContext;
-  int read, lineNumber = 0;
+  int read;
   FILE *lastInstallFile;
 
   if (!status) {
